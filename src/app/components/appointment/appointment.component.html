@@ -1,0 +1,132 @@
+<section id="appointment" class="appointment">
+  <div class="appointment-bg">
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&auto=format&fit=crop&q=80" alt="">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="appointment-grid">
+      <div class="appointment-info reveal">
+        <span class="eyebrow eyebrow-light">Prendre rendez-vous</span>
+        <h2>Un parcours simple,<br>de la réservation aux résultats.</h2>
+        <p class="lead">
+          Réservez en ligne, par téléphone ou demandez un prélèvement à domicile.
+          Nous vous confirmerons votre créneau dans les plus brefs délais.
+        </p>
+
+        <div class="steps-list">
+          <div class="step" *ngFor="let s of steps">
+            <span class="step-num">{{ s.num }}</span>
+            <div>
+              <h4>{{ s.title }}</h4>
+              <p>{{ s.text }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-call">
+          <div class="info-call-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <span>Préférez parler à quelqu'un ?</span>
+            <a href="tel:+212522526252">05 22 52 62 52</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-wrap reveal">
+        <form class="appointment-form" (ngSubmit)="onSubmit()" #f="ngForm">
+          <div class="form-header">
+            <h3>Demande de rendez-vous</h3>
+            <span class="form-subtitle">Remplissez le formulaire — réponse sous 24h.</span>
+          </div>
+
+          <div class="form-success" *ngIf="submitted">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <path d="M22 4 12 14.01l-3-3"/>
+            </svg>
+            Merci, votre demande a bien été envoyée. Nous vous recontacterons sous 24h.
+          </div>
+
+          <div class="form-error" *ngIf="errorMsg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {{ errorMsg }}
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="nom">Nom complet</label>
+              <input id="nom" type="text" name="nom" [(ngModel)]="form.nom" required placeholder="Mohamed Alaoui" [disabled]="submitting">
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" type="tel" name="telephone" [(ngModel)]="form.telephone" required placeholder="06 12 34 56 78" [disabled]="submitting">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="email" [(ngModel)]="form.email" required placeholder="prenom@email.com" [disabled]="submitting">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="date">Date souhaitée</label>
+              <input id="date" type="date" name="date" [(ngModel)]="form.date" required [disabled]="submitting">
+            </div>
+            <div class="field">
+              <label for="heure">Heure</label>
+              <input id="heure" type="time" name="heure" [(ngModel)]="form.heure" required [disabled]="submitting">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Type de prélèvement</label>
+            <div class="radio-row">
+              <label class="radio-pill">
+                <input type="radio" name="type" value="Au laboratoire" [(ngModel)]="form.type" [disabled]="submitting">
+                <span>Au laboratoire</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="type" value="À domicile" [(ngModel)]="form.type" [disabled]="submitting">
+                <span>À domicile</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" [(ngModel)]="form.message" rows="3" placeholder="Précisez vos analyses ou indications particulières..." [disabled]="submitting"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit" [disabled]="submitting || !f.valid">
+            <span *ngIf="!submitting">
+              Envoyer ma demande
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-left:6px;">
+                <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </span>
+            <span *ngIf="submitting" class="loading-spinner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+              </svg>
+              Envoi en cours...
+            </span>
+          </button>
+
+          <p class="form-disclaimer">
+            Vos données restent strictement confidentielles selon le secret médical.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

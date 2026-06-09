@@ -1,0 +1,36 @@
+<header class="site-header" [class.scrolled]="scrolled">
+  <div class="container header-inner">
+    <a href="#hero" class="brand" (click)="closeMobile()">
+      <div class="brand-logo">
+        <img src="logo.png" alt="EL Khalil Logo" width="40" height="40">
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">EL Khalil</span>
+        <span class="brand-tag">Laboratoire d'analyses médicales</span>
+      </div>
+    </a>
+
+    <nav class="nav" [class.open]="mobileOpen">
+      <a href="#about" (click)="closeMobile()">À propos</a>
+      <a href="#services" (click)="closeMobile()">Services</a>
+      <a href="#gallery" (click)="closeMobile()">Laboratoire</a>
+      <a href="#team" (click)="closeMobile()">Équipe</a>
+      <a href="#appointment" (click)="closeMobile()">Rendez-vous</a>
+      <a href="#contact" (click)="closeMobile()">Contact</a>
+    </nav>
+
+    <a href="#appointment" class="header-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+      <span>Prendre RDV</span>
+    </a>
+
+    <button class="burger" [class.active]="mobileOpen" (click)="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,26 @@
+<section id="team" class="team">
+  <div class="container">
+    <div class="team-header reveal">
+      <span class="eyebrow">Notre équipe</span>
+      <h2>Des professionnels<br><span class="highlight">à votre service</span></h2>
+      <p>
+        Une équipe pluridisciplinaire — biologistes, infirmiers et techniciens — réunie
+        autour d'une même exigence : la qualité du soin et l'écoute du patient.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <div *ngFor="let m of team; let i = index" class="member-card reveal" [style.transition-delay.ms]="i * 100">
+        <div class="member-photo">
+          <img [src]="m.photo" [alt]="m.name">
+          <div class="photo-frame"></div>
+        </div>
+        <div class="member-content">
+          <h4>{{ m.name }}</h4>
+          <span class="member-role">{{ m.role }}</span>
+          <p>{{ m.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

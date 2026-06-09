@@ -1,0 +1,24 @@
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <span class="eyebrow">Notre laboratoire</span>
+      <h2>Découvrez nos <span class="highlight">installations</span></h2>
+      <p>Un environnement moderne, propre et accueillant, équipé des dernières technologies de biologie médicale pour garantir la fiabilité de vos analyses.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div *ngFor="let img of images; let i = index"
+           class="gallery-item reveal"
+           [class.large]="i === 0 || i === 3"
+           [style.transition-delay.ms]="i * 80">
+        <div class="gallery-image">
+          <img [src]="img.src" [alt]="img.title" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-category">{{ img.category }}</span>
+            <h4>{{ img.title }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

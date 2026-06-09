@@ -1,0 +1,169 @@
+/* ==========================================================
+   EL KHALIL — Medical Design System
+   Palette: bleu médical professionnel
+   ========================================================== */
+
+:root {
+  /* Bleus médicaux principaux */
+  --blue-deep: #0a3d62;
+  --blue-primary: #1e6091;
+  --blue-mid: #3282b8;
+  --blue-light: #bbe1fa;
+  --blue-pale: #e8f4fa;
+
+  /* Cyan accent */
+  --cyan: #0fb9b1;
+  --cyan-soft: #d0f0ed;
+
+  /* Neutres */
+  --white: #ffffff;
+  --off-white: #f8fafc;
+  --gray-50: #f1f5f9;
+  --gray-100: #e2e8f0;
+  --gray-200: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+
+  /* Accents (vert sauge + terre douce) */
+  --sage: #87a878;
+  --warm-earth: #a89078;
+  --warm-soft: #f0e8de;
+
+  /* Texte */
+  --ink: #0f1e2e;
+  --ink-soft: #2c3e50;
+  --ink-muted: #64748b;
+
+  /* Système */
+  --line: rgba(10, 61, 98, 0.12);
+  --line-soft: rgba(10, 61, 98, 0.06);
+
+  /* Typographie : Plus Jakarta Sans (titres) + Inter (corps) */
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Rythme */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+
+  --shadow-soft: 0 4px 16px -4px rgba(10, 61, 98, 0.1);
+  --shadow-medium: 0 14px 40px -12px rgba(10, 61, 98, 0.18);
+  --shadow-large: 0 28px 60px -20px rgba(10, 61, 98, 0.25);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--blue-deep);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media (max-width: 720px) {
+  .container { padding: 0 20px; }
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: var(--cyan);
+  border-radius: 2px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--blue-primary);
+  color: var(--white);
+  box-shadow: 0 6px 20px -6px rgba(30, 96, 145, 0.5);
+}
+.btn-primary:hover {
+  background: var(--blue-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(30, 96, 145, 0.6);
+}
+
+.btn-ghost {
+  background: var(--white);
+  color: var(--blue-primary);
+  border: 1.5px solid var(--blue-primary);
+}
+.btn-ghost:hover {
+  background: var(--blue-primary);
+  color: var(--white);
+}
+
+.btn-cyan {
+  background: var(--cyan);
+  color: var(--white);
+}
+.btn-cyan:hover {
+  background: var(--blue-deep);
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

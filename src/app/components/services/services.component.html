@@ -1,0 +1,78 @@
+<section id="services" class="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="eyebrow">Nos prestations</span>
+      <h2>Un éventail complet<br>d'<span class="highlight">analyses médicales</span></h2>
+      <p>
+        Du bilan de routine aux examens spécialisés, notre laboratoire couvre l'ensemble
+        des disciplines de biologie médicale avec la même exigence de qualité.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article *ngFor="let s of services; let i = index" class="service-card reveal" [style.transition-delay.ms]="i * 80">
+        <div class="card-icon-wrap">
+          <div class="card-icon">
+            <ng-container [ngSwitch]="s.iconType">
+              <svg *ngSwitchCase="'hema'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z"/>
+              </svg>
+              <svg *ngSwitchCase="'biochem'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 2v6l-3 4a4 4 0 0 0 3 7h6a4 4 0 0 0 3-7l-3-4V2"/>
+                <line x1="9" y1="2" x2="15" y2="2"/>
+                <line x1="7" y1="14" x2="17" y2="14"/>
+              </svg>
+              <svg *ngSwitchCase="'hormone'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10"/>
+              </svg>
+              <svg *ngSwitchCase="'micro'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+              </svg>
+              <svg *ngSwitchCase="'sero'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              <svg *ngSwitchCase="'home'" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </ng-container>
+          </div>
+          <span class="card-number">{{ s.number }}</span>
+        </div>
+
+        <h3>{{ s.title }}</h3>
+        <p class="card-desc">{{ s.description }}</p>
+
+        <ul class="card-list">
+          <li *ngFor="let item of s.items">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>{{ item }}</span>
+          </li>
+        </ul>
+
+        <a href="#contact" class="card-link">
+          En savoir plus
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </article>
+    </div>
+
+    <div class="services-cta reveal">
+      <p>Une analyse spécifique à demander ?</p>
+      <a href="#contact" class="btn btn-primary">
+        Contactez-nous
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
